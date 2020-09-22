@@ -1,17 +1,11 @@
 from app import app
 import flask
 from flask import request
-import hashlib
 from sqlitedict import SqliteDict
 import qrcode
 import io
 
 bookmark_dict = SqliteDict('./my_db.sqlite', autocommit=True)
-
-def getStr(length):
-    letters_and_digits = string.ascii_letters + string.digits
-    result = ''.join((random.choice(letters_and_digits) for i in range(length)))
-    return result
 
 @app.route('/')
 @app.route('/index')
