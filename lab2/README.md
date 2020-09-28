@@ -2,6 +2,16 @@
 
 Implement a master-work pattern to calculate the square root of the numbers.
 
+Check out [this video](https://github.com/myrmecobius/CMPE273-FA20/blob/master/lab2/lab2demo.mp4) for a quick demo.
+
+# Group Members:
+
+Manish Arigala (014492712)
+
+Daniel Kim ()
+
+Heng Jerry Quan (014560130)
+
 ## Components
 
 ```
@@ -26,5 +36,4 @@ The worker component listens (PULL) the numbers from the generator in a round ro
 * Dashboard
 
 The dashboard component receives the result from the workers and displays the result to the console.
-
 
