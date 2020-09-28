@@ -2,13 +2,15 @@
 
 Implement a master-work pattern to calculate the square root of the numbers.
 
+The source files can be found in [the sqrt folder](https://github.com/myrmecobius/CMPE273-FA20/tree/master/lab2/sqrt).
+
 Check out [this video](https://github.com/myrmecobius/CMPE273-FA20/blob/master/lab2/lab2demo.mp4) for a quick demo.
 
 # Group Members:
 
 Manish Arigala (014492712)
 
-Daniel Kim ()
+Daniel Kim (014641497)
 
 Heng Jerry Quan (014560130)
 
