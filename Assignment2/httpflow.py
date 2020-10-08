@@ -86,7 +86,7 @@ def printTime():
 #%% Define job to be scheduled
 def job():
     invoke(step_ID)
-    printTime()
+    #printTime()
 
 #%% Parse input and add to schedule
 when = when.split(" ")
