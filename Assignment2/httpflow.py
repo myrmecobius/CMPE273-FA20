@@ -118,7 +118,7 @@ else:
         exit()
     h = ("0"*(2-len(when[1])) + when[1])*(when[1].isnumeric()) + "00"*(not when[1].isnumeric())
     m = ("0"*(2-len(when[0])) + when[0])*(when[0].isnumeric()) + "00"*(not when[0].isnumeric())
-    cmd += "." + weekdays[(when[2])] + f".at({h}:{m}).do(job)"
+    cmd += "." + weekdays[(when[2])] + f".at('{h}:{m}').do(job)"
     exec(cmd)
 
 #%% Run on repeat
