@@ -5,25 +5,32 @@ Created on Mon Nov 16 15:24:46 2020
 @author: theor
 """
 
-test1 = "tcp://127.0.0.1:2000"
-test2 = "tcp://127.0.0.1:2001"
-test3 = "tcp://128.0.0.1:2000"
+#%% Load imports
+import consul
+import time
 
-def toInt( someString ):
-    charList = []
-    valueList = []
-    for c in someString:
-        charList.append(c)
-        valueList.append(ord(c))
-    print(sum(valueList))
-    strList = [str(x) for x in valueList]
-    concat = int("".join(strList))
-    print(concat)
-    return concat
+c = consul.Consul()
+a = c.agent
 
-def hashfn( num ):
-    x = num % 360
-    a = 24601 % 360
-    b = 1347 % 360
-    print(x,a,b)
-    return (a*x + b) % 360
+a.service.register(
+    name = "node2"
+    #address = "127.0.0.1",
+    #port = "8000"
+    )
+
+a.service.deregister("node1")
+
+#%% remove all services
+k = a.services().keys()
+for key in k:
+    a.service.deregister(key)
+
+#%% Server test
+time.sleep(3)
+a.service.register(name="8001", port=8001)
+time.sleep(1)
+a.service.register(name="8002", port=8002)
+time.sleep(1)
+a.service.deregister("8002")
+time.sleep(2)
+a.service.register(name="8001", port=8001)
