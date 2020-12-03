@@ -21,7 +21,8 @@ def chooseServerHRW( keyStr, serverList ): #choose server for HRW hashing
         w = weight( keyStr, s )
         serverHash[w] = s
         weights.append(w)
-    #print(f"weights are {serverHash}, choosing {max(weights)} corresponding to {serverHash[max(weights)]}")
+    ks = serverHash[max(weights)].split(":")[-1]
+    print(f"weights are {list(serverHash.keys())}, choosing {max(weights)} corresponding to {ks}")
     return serverHash[max(weights)]
 
 

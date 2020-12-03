@@ -22,7 +22,8 @@ def create_clients(servers):
         time.sleep(1)
     return producers
 
-def clearNodes():
+def clearNodes( producers ):
+    print("Clearing node data...")
     for s in servers:
         delete_cmd = {'op': "DELETE_ALL", "key":"", "value":""}
         producers[s].send_json(delete_cmd)
@@ -30,6 +31,7 @@ def clearNodes():
         if not result["result"]:
             print("Bad response")
             raise "BadResponseException"
+    print()
 
 def generate_data_round_robin(servers, producers, st):
     print("Starting Round Robin...")
@@ -38,7 +40,8 @@ def generate_data_round_robin(servers, producers, st):
     for num in range(numItems):
         data = { 'op': "PUT" ,'key': f'key-{num}', 'value': f'value-{num}' }
         k = next(pool)
-        #print(f"Sending data:{data} to bin {k}")
+        ks = k.split(":")[-1]
+        print(f"Sending data key-{num} to bin {ks}")
         #print()
         producers[k].send_json(data)
         result = producers[k].recv_json()
@@ -201,15 +204,15 @@ if __name__ == "__main__":
     time.sleep(3)
 
     generate_data_round_robin(servers, producers, sleep_time)
-    clearNodes()
+    clearNodes(producers)
     time.sleep(3)
 
     generate_data_hrw_hashing(servers, producers, numItems, sleep_time)
-    clearNodes()
+    clearNodes(producers)
     time.sleep(3)
     
     generate_data_consistent_hashing(servers, producers, numItems, sleep_time)
-    #clearNodes()
+    #clearNodes(producers)
     time.sleep(3)
     
     add_node( c, "2004", producers, servers )
@@ -224,3 +227,5 @@ if __name__ == "__main__":
             c.agent.service.deregister(key)
     #print("Running services:")
     #print(c.agent.services())
+    print()
+    print("Done.\n")

@@ -19,6 +19,7 @@ client-down:
 
 leave:
 	docker exec badger consul leave
+	sleep 3
 	docker rm badger
 
 docker-clean:

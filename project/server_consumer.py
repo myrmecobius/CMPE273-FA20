@@ -19,36 +19,34 @@ def server(port):
             print(f"Saved value {data[key]} in key {key} on node {port}")
             result = {"result":True}
             consumer.send_json(result)
-            print("Reply sent")
+            #print("Reply sent")
         elif op == "GET_ONE":
             result = {"result":bool(data.get(key,False)), "key":key, "value":data.get(key,False)}
             consumer.send_json(result)
-            print("Replied with data " + result + f"on node {port}")
+            #print("Replied to GET with data " + result + f"on node {port}")
         elif op == "GET_ALL":
             result = []
             for key in data.keys():
                 result.append({"key":key, "value":data[key]})
             res = {"result":True, "collection":result}
             consumer.send_json(res)
-            print(f"Replied with all data from node {port}")
+            #print(f"Replied with all data from node {port}")
         elif op == "DELETE":
             data.pop(key, None)
             result = {"result":True}
             consumer.send_json(result)
-            print(f"Deleted entry on node {port}")
+            #print(f"Deleted entry on node {port}")
         elif op == "DELETE_ALL":
-            print("Clearing contents on port " + str(port))
+            #print("Clearing contents on port " + str(port))
             data = dict()
             result = {"result":True}
             consumer.send_json(result)
-            print(f"Deleted all entries from node {port}")
         else:
             result = {"result":False}
             consumer.send_json(result)
             print(f"An Error occurred on node {port}")
             pass
-
-        print()
+        #print()
 
 if __name__ == "__main__":
     c = consul.Consul()

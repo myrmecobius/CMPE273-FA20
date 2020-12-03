@@ -1,4 +1,5 @@
 import time
+import pprint
 
 def toInt( someString ): #convert string to int by concatenating int of each char
     result = ""
@@ -18,12 +19,13 @@ def chooseServerConsistent( keyStr, binHash ): # choose server for consistent ha
     keyHash = consistentHash( keyStr )
     servs = [x for x in binHash.keys()]
     servs.sort()
-    #print(f"servs = {servs}")
     for x in servs:
         if x >= keyHash:
-            #print(f"Hashing {keyHash} to {x} on bin {binHash[x]}")
+            ks = binHash[x].split(":")[-1]
+            print(f"Hashing {keyHash} to {x} on bin {ks}")
             return binHash[x]
-    #print(f"Hashing {keyHash} to {servs[0]} on bin {binHash[servs[0]]}")
+    ks = binHash[servs[0]].split(":")[-1]
+    print(f"Hashing {keyHash} to {servs[0]} on bin {ks}")
     return binHash[servs[0]]
 
 def generate_data_consistent_hashing(servers, producers, numItems, st):
@@ -32,6 +34,9 @@ def generate_data_consistent_hashing(servers, producers, numItems, st):
     for s in servers:
         binHash[consistentHash(s)] = s
     counts = dict()
+    print("Bin hash values:")
+    pprint.pprint(binHash)
+    print()
     for num in range(numItems):
         data = { 'op':"PUT", 'key': f'key-{num}', 'value': f'value-{num}' }
         sendBin = chooseServerConsistent( data["key"], binHash )

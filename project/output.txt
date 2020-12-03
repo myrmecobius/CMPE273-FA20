@@ -1,0 +1,111 @@
+Looking for nodes...
+4 nodes found
+
+Creating a server connection to tcp://127.0.0.1:2000...
+Creating a server connection to tcp://127.0.0.1:2001...
+Creating a server connection to tcp://127.0.0.1:2002...
+Creating a server connection to tcp://127.0.0.1:2003...
+
+Starting Round Robin...
+Sending data key-0 to bin 2000
+Sending data key-1 to bin 2001
+Sending data key-2 to bin 2002
+Sending data key-3 to bin 2003
+Sending data key-4 to bin 2000
+Sending data key-5 to bin 2001
+Sending data key-6 to bin 2002
+Sending data key-7 to bin 2003
+Sending data key-8 to bin 2000
+Sending data key-9 to bin 2001
+Sending data key-10 to bin 2002
+Sending data key-11 to bin 2003
+Sending data key-12 to bin 2000
+Sending data key-13 to bin 2001
+Sending data key-14 to bin 2002
+Sending data key-15 to bin 2003
+Sending data key-16 to bin 2000
+Sending data key-17 to bin 2001
+Sending data key-18 to bin 2002
+Sending data key-19 to bin 2003
+Done. Number of items sent to bin: {'2000': 5, '2001': 5, '2002': 5, '2003': 5}
+
+Clearing node data...
+
+Starting HRW Hashing...
+weights are [659, 3507, 1299, 2099], choosing 3507 corresponding to 2001
+weights are [2603, 2907, 3451, 2315], choosing 3451 corresponding to 2002
+weights are [515, 2307, 915, 2099], choosing 2307 corresponding to 2001
+weights are [2891, 1707, 1963, 2315], choosing 2891 corresponding to 2000
+weights are [3539, 1107, 99, 2099], choosing 3539 corresponding to 2000
+weights are [443, 507, 1051, 2315], choosing 2315 corresponding to 2003
+weights are [1235, 3507, 3315, 2099], choosing 3507 corresponding to 2001
+weights are [1451, 2907, 3163, 2315], choosing 3163 corresponding to 2002
+weights are [2819, 2307, 2499, 2099], choosing 2819 corresponding to 2000
+weights are [1883, 1707, 2251, 2315], choosing 2315 corresponding to 2003
+weights are [659, 1107, 99, 2099], choosing 2099 corresponding to 2003
+weights are [2603, 507, 1051, 2315], choosing 2603 corresponding to 2000
+weights are [515, 3507, 3315, 2099], choosing 3507 corresponding to 2001
+weights are [2891, 2907, 3163, 2315], choosing 3163 corresponding to 2002
+weights are [3539, 2307, 2499, 2099], choosing 3539 corresponding to 2000
+weights are [443, 1707, 2251, 2315], choosing 2315 corresponding to 2003
+weights are [1235, 1107, 2115, 2099], choosing 2115 corresponding to 2002
+weights are [1451, 507, 763, 2315], choosing 2315 corresponding to 2003
+weights are [2819, 3507, 1299, 2099], choosing 3507 corresponding to 2001
+weights are [1883, 2907, 3451, 2315], choosing 3451 corresponding to 2002
+Done. Number of items sent to bin: {'2001': 5, '2002': 5, '2000': 5, '2003': 5}
+
+Clearing node data...
+
+Starting Consistent Hashing...
+Bin hash values:
+{634: 'tcp://127.0.0.1:2002',
+ 1397: 'tcp://127.0.0.1:2001',
+ 2160: 'tcp://127.0.0.1:2000',
+ 3471: 'tcp://127.0.0.1:2003'}
+
+Hashing 1460 to 2160 on bin 2000
+Hashing 697 to 1397 on bin 2001
+Hashing 3534 to 634 on bin 2002
+Hashing 2771 to 3471 on bin 2003
+Hashing 2008 to 2160 on bin 2000
+Hashing 1245 to 1397 on bin 2001
+Hashing 482 to 634 on bin 2002
+Hashing 3319 to 3471 on bin 2003
+Hashing 2556 to 3471 on bin 2003
+Hashing 1793 to 2160 on bin 2000
+Hashing 2260 to 3471 on bin 2003
+Hashing 1497 to 2160 on bin 2000
+Hashing 734 to 1397 on bin 2001
+Hashing 3571 to 634 on bin 2002
+Hashing 2808 to 3471 on bin 2003
+Hashing 2045 to 2160 on bin 2000
+Hashing 1282 to 1397 on bin 2001
+Hashing 519 to 634 on bin 2002
+Hashing 3356 to 3471 on bin 2003
+Hashing 2593 to 3471 on bin 2003
+Done. Number of items sent to bin: {'2000': 5, '2001': 4, '2002': 4, '2003': 7}
+
+Adding a new node on port 2004
+Hashing 2708 to 3471 on bin 2003
+Rehashing...
+Hashing 2771 to 3471 on bin 2003
+Hashing 3319 to 3471 on bin 2003
+Hashing 2556 to 2708 on bin 2004
+Hashing 2260 to 2708 on bin 2004
+Hashing 2808 to 3471 on bin 2003
+Hashing 3356 to 3471 on bin 2003
+Hashing 2593 to 2708 on bin 2004
+Done rehashing, 3 entries moved
+Final distribution:
+{'2000': 5, '2001': 4, '2002': 4, '2003': 4, '2004': 3}
+
+Deleting node on port 2003
+Hashing 3471 to 634 on bin 2002
+Rehashing...
+Done rehashing, 4 entries moved
+Deletion completed. Final distribution:
+{'2004': 3, '2001': 4, '2002': 8, '2000': 5}
+
+
+Done.
+
